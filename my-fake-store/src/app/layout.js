@@ -2,6 +2,8 @@ import Copyright from "@/components/Copyright";
 import Navbar from "@/components/Navbar";
 import { CartProvider } from "@/context/CartContext";
 import { UserProvider } from "@/context/UserContext";
+import { theme } from "@/context/themeContext";
+import { ThemeProvider } from "@mui/material";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -17,13 +19,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <UserProvider>
-          <CartProvider>
-          <Navbar />
-          {children}
-          <Copyright sx={{ nt: 8, mb: 4 }} />
-          </CartProvider>
-        </UserProvider>
+        <ThemeProvider theme={theme}>
+          <UserProvider>
+            <CartProvider>
+              <Navbar />
+              {children}
+              <Copyright sx={{ nt: 8, mb: 4 }} />
+            </CartProvider>
+          </UserProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
