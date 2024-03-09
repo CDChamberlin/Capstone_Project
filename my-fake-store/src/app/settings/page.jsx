@@ -17,12 +17,12 @@ function AccountInfo() {
     <Paper style={{ padding: 20 }}>
       <Typography variant="h5">Current Account Information</Typography>
       <Typography>
-        Name: {user.firstName} {user.lastName}
+        Name: {user?.firstName} {user?.lastName}
       </Typography>
-      <Typography>Email: {user.email}</Typography>
+      <Typography>Email: {user?.email}</Typography>
       <Typography>
-        Address: {user.street}, {user.aptnumber}, {user.city}, {user.state},{" "}
-        {user.zipcode}
+        Address: {user?.street}, {user?.aptnumber}, {user?.city}, {user?.state},{" "}
+        {user?.zipcode}
       </Typography>
       <Button variant="contained" color="error" size="large" startIcon={<DeleteForeverIcon />} onClick={handleDelete}>Delete Account</Button>
     </Paper>
@@ -32,14 +32,14 @@ function AccountInfo() {
 function AccountForm() {
   const { user, updateUser } = useUser();
   const [formData, setFormData] = useState({
-    firstName: user.firstName,
-    lastName: user.lastName,
-    email: user.email,
-    street: user.street || "",
-    aptnumber: user.aptnumber || "",
-    city: user.city || "",
-    state: user.state || "",
-    zipcode: user.zipcode || "",
+    firstName: user?.firstName,
+    lastName: user?.lastName,
+    email: user?.email,
+    street: user?.street || "",
+    aptnumber: user?.aptnumber || "",
+    city: user?.city || "",
+    state: user?.state || "",
+    zipcode: user?.zipcode || "",
   });
 
   
