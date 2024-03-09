@@ -39,7 +39,8 @@ export const UserProvider = ({ children }) => {
     try {
       console.log(`Update User: currentUser ${JSON.stringify(currentUser)}`)
       const response = await api.put(`/users/${currentUser.email}`, userData);
-      setCurrentUser(response.data.data)
+      console.log('Update user response ', response.data.user)
+      setCurrentUser(response.data.user)
     } catch (error) {
       console.error("Error updating user: ", error);
       throw error;

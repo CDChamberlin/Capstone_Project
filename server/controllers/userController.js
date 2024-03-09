@@ -50,25 +50,28 @@ const deleteUser = (req, res) => {
 
 const findUserByEmail = async (email) => {
   
-  return await Models.User.findOne({ where: { email: email } });
+  return await Models.User.findOne({ where: { email: email }, attributes: {exclude: [ 'password', 'createdAt', 'updatedAt'] } } );
 };
 
 // Update user information by email
 const updateUserByEmail = async (email, newData, res) => {
   try {
-    const user = await Models.User.findOne({ where: { email: email }, attributes: {exclude: ['id', 'password', 'createdAt', 'updatedAt'] } } );
+    const user = await Models.User.findOne({ where: { email: email }, attributes: {exclude: [ 'password', 'createdAt', 'updatedAt'] } } );
     if (user) {
       // Update user information
       await user.update(newData);
-      const updatedUser = await findUserByEmail(email);
+      console.log('Updateuserbyemail: ', newData)
+      const updatedUser = await Models.User.findOne({raw: true, where: { email: newData.email }, attributes: {exclude: [ 'password', 'createdAt', 'updatedAt'] } } );
+      console.log('updateUserByEmail:', updatedUser)
 
       return res
-        .status(204)
+        .status(200)
         .send({
-          result: 204,
+          result: 200,
           message: "User information updated successfully",
           user: updatedUser
         });
+      // return res.status(200).send({result: 200, data: updatedUser})
     } else {
       res.status(404).send({ result: 404, message: "User not found" });
     }
