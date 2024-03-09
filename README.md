@@ -1,4 +1,4 @@
-# Mini Project 3: E-commerce Website Design 
+# Capstone Project: E-commerce Website Design 
 
 This application is a student project developed as part of my coursework at the Institute of Data Software Engineering. It aims to mimic an online store, allowing users to create accounts, manage carts, and interact with products. For this project, the focus is creating and linking to a Database through an API and CRUD operations. The user can create an account, read their current info, update their info, and delete the account. They can also view their cart. 
 
