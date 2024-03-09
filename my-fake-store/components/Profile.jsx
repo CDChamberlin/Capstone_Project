@@ -1,6 +1,5 @@
-import { useUser } from "@/context/UserContext";
 import { Button } from "@mui/material";
-import { useState } from "react";
+import { useUser } from "context/UserContext";
 
 export default function Profile(user) {
 const { currentUser } = useUser()

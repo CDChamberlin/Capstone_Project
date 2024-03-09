@@ -1,5 +1,4 @@
 "use client";
-import { useCart } from "@/context/CartContext";
 import {
   Button,
   Card,
@@ -8,6 +7,7 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import { useCart } from "context/CartContext";
 import Link from "next/link";
 
 export default function SmallCard({ name, image, description, price }) {
@@ -19,7 +19,7 @@ export default function SmallCard({ name, image, description, price }) {
         component="img"
         alt={name}
         src={image}
-        style={{ objectFit: "contain", height: "150px", width: "100%", maxWidth: "100%" }}
+        style={{ objectFit: "contain", height: "150px", width: "100%", maxWidth: "100%", paddingTop: "20px" }}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

@@ -1,5 +1,4 @@
 "use client";
-import { useUser } from "@/context/UserContext";
 import { LockOutlined } from "@mui/icons-material";
 import {
   Avatar,
@@ -12,6 +11,7 @@ import {
   TextField,
   Typography
 } from "@mui/material";
+import { useUser } from "context/UserContext";
 import { useRouter } from "next/navigation";
 
 

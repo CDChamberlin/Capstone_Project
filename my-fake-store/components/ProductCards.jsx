@@ -1,7 +1,7 @@
-import { useCart } from "@/context/CartContext";
+import FetchProducts from "components/FetchProducts";
+import SmallCard from "components/SmallCard";
+import { useCart } from "context/CartContext";
 import { useState } from "react";
-import FetchProducts from "./FetchProducts";
-import SmallCard from "./SmallCard";
 
 export default function ProductCards() {
   const cart = useCart()

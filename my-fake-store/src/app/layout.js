@@ -1,15 +1,15 @@
-import Copyright from "@/components/Copyright";
-import Navbar from "@/components/Navbar";
-import { CartProvider } from "@/context/CartContext";
-import { UserProvider } from "@/context/UserContext";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
+import Copyright from "components/Copyright";
+import Navbar from "components/Navbar";
+import { CartProvider } from "context/CartContext";
+import { UserProvider } from "context/UserContext";
 
 
 
 import { Inter } from "next/font/google";
 
-import theme from "@/context/theme";
 import { ThemeProvider } from "@mui/material";
+import theme from "context/theme";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
