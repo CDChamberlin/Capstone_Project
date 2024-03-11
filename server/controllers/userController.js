@@ -48,11 +48,6 @@ const deleteUser = (req, res) => {
     });
 };
 
-const findUserByEmail = async (email) => {
-  
-  return await Models.User.findOne({ where: { email: email }, attributes: {exclude: [ 'password', 'createdAt', 'updatedAt'] } } );
-};
-
 // Update user information by email
 const updateUserByEmail = async (email, newData, res) => {
   try {
@@ -60,9 +55,8 @@ const updateUserByEmail = async (email, newData, res) => {
     if (user) {
       // Update user information
       await user.update(newData);
-      console.log('Updateuserbyemail: ', newData)
-      const updatedUser = await Models.User.findOne({raw: true, where: { email: newData.email }, attributes: {exclude: [ 'password', 'createdAt', 'updatedAt'] } } );
-      console.log('updateUserByEmail:', updatedUser)
+       const updatedUser = await Models.User.findOne({raw: true, where: { email: newData.email }, attributes: {exclude: [ 'password', 'createdAt', 'updatedAt'] } } );
+      
 
       return res
         .status(200)
@@ -71,7 +65,6 @@ const updateUserByEmail = async (email, newData, res) => {
           message: "User information updated successfully",
           user: updatedUser
         });
-      // return res.status(200).send({result: 200, data: updatedUser})
     } else {
       res.status(404).send({ result: 404, message: "User not found" });
     }
@@ -82,13 +75,11 @@ const updateUserByEmail = async (email, newData, res) => {
 };
 
 const login = async (req, res) =>{
-  //console.log(`userController: req.body: ${JSON.stringify(req)}`)
   try {
     const userEmail = req.body.email 
     const userPassword  = req.body.password;
     const user = await Models.User.findOne({raw: true, where: { email: userEmail }, attributes: {exclude: ['id', 'createdAt', 'updatedAt'] } } );
-    //console.log(`Try block, email: ${userEmail}, password: ${userPassword}, user: ${JSON.stringify(user)}`)
-
+    
     // Checks first for user, then password. If either fails, returns the message. This way a rouge can't determine if they have a valid username.
     if ((!user) || (user.password !== userPassword)) {
       return res.status(404).send({ result: 404, message: "There is a problem with either your username or password" });
@@ -96,8 +87,7 @@ const login = async (req, res) =>{
 
     // Password matches, user is authenticated
     const token = jwt.sign({userId: user.id}, process.env.NEXTAUTH_SECRET, {expiresIn: '1h'})
-    //const { createdAt, updatedAt, id, password, ...userWithoutSensitiveInfo } = user;
-    console.log('Login user ', user)
+    
     return res.status(200).send({ result: 200, message: "Login successful", user: user, token: token });
   } catch (err) {
     console.log(err);
