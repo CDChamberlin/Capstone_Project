@@ -15,8 +15,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "My Fake Store Proj",
-  description: "A project for the Institute of Data Software Engineering Class",
+  title: "Cat and Mouse Collectibles",
+  description: "An e-commerce website concept designed for Cat and Mouse Collectibles",
   author: "Collin Chamberlin",
 };
 

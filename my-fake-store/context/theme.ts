@@ -5,14 +5,23 @@ const { createTheme } = require("@mui/material");
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#a69159",
+      main: "#D4AF37",
     },
     secondary: {
-      main: "#293439",
+      main: "#6C8EBF",
     },
     error: {
-      main: "#c84445",
+      main: "#8B4513",
     },
+    warning:{
+      main: "#8B4513"
+    },
+    info: {
+      main: "#6C8EBF"
+    }, 
+    success: {
+      main: "#D4AF37"
+    }
   },
 });
 
