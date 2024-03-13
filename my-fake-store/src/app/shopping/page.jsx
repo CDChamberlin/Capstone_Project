@@ -1,10 +1,10 @@
-"use client"
-import SmallCard from "@/components/SmallCard";
-import { useCart } from "@/context/CartContext";
+"use client";
+import CartCard from "components/CartCard";
+import { useCart } from "context/CartContext";
 
 export default function Shopping() {
-  const {cart} = useCart();
-  console.log(`Shopping current cart: ${cart}`)
+  const { cart } = useCart();
+  console.log(`Shopping current cart: ${cart}`);
 
   const isValidHttpUrl = (string) => {
     try {
@@ -17,7 +17,7 @@ export default function Shopping() {
 
   const createCard = (item) => {
     return (
-      <SmallCard
+      <CartCard
         key={item.id}
         name={item.title}
         image={isValidHttpUrl(item.image) ? item.image : ""}
@@ -28,5 +28,18 @@ export default function Shopping() {
     );
   };
   let items = cart.map((item) => createCard(item));
-  return <>{items}</>;
+  return (
+    <>
+      {/* <h3>{`Total ${cart.total()}`}</h3> */}
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "space-around",
+        }}
+      >
+        {items}
+      </div>
+    </>
+  );
 }

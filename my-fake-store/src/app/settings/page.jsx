@@ -1,28 +1,28 @@
 "use client";
 
-import { useUser } from "@/context/UserContext";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import SaveIcon from '@mui/icons-material/Save';
 import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
+import { useUser } from "context/UserContext";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 function AccountInfo() {
   const {user, deleteUser} = useUser(); 
-  const handleDelete = () =>{
-    deleteUser(user.email)
+  const handleDelete = async () =>{
+    await deleteUser(user.email)
   }
-  console.log(JSON.stringify(user))
+  console.log(`Account Info data ${JSON.stringify(user)}`)
   return (
     <Paper style={{ padding: 20 }}>
       <Typography variant="h5">Current Account Information</Typography>
       <Typography>
-        Name: {user.firstName} {user.lastName}
+        Name: {user?.firstName} {user?.lastName}
       </Typography>
-      <Typography>Email: {user.email}</Typography>
+      <Typography>Email: {user?.email}</Typography>
       <Typography>
-        Address: {user.street}, {user.aptnumber}, {user.city}, {user.state},{" "}
-        {user.zipcode}
+        Address: {user?.street}, {user?.aptnumber}, {user?.city}, {user?.state},{" "}
+        {user?.zipcode}
       </Typography>
       <Button variant="contained" color="error" size="large" startIcon={<DeleteForeverIcon />} onClick={handleDelete}>Delete Account</Button>
     </Paper>
@@ -32,14 +32,14 @@ function AccountInfo() {
 function AccountForm() {
   const { user, updateUser } = useUser();
   const [formData, setFormData] = useState({
-    firstName: user.firstName,
-    lastName: user.lastName,
-    email: user.email,
-    street: user.street || "",
-    aptnumber: user.aptnumber || "",
-    city: user.city || "",
-    state: user.state || "",
-    zipcode: user.zipcode || "",
+    firstName: user?.firstName,
+    lastName: user?.lastName,
+    email: user?.email,
+    street: user?.street || "",
+    aptnumber: user?.aptnumber || "",
+    city: user?.city || "",
+    state: user?.state || "",
+    zipcode: user?.zipcode || "",
   });
 
   
@@ -149,7 +149,14 @@ function AccountForm() {
 export default function Settings() {
   const router = useRouter()
   const user = useUser()
-  if (user === null){router.push("/login")} 
+
+  // useEffect(() =>{
+  //   console.log(`Settings Page useEffect user: ${JSON.stringify(user)}`)
+  //   if (!user.email) {
+  //     router.push('/login')
+  //   }
+  // }, [user, router])
+  
   return (
     <div style={{ padding: 20 }}>
       <Grid container spacing={3}>

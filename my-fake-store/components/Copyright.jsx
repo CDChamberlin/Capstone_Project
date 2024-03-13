@@ -6,7 +6,7 @@ export default function Copyright(props) {
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright ©'}
             <Link color="inherit" href="#">
-                My Fake Store
+                Cat and Mouse Collectibles
             </Link>
             {' '}
             {new Date().getFullYear()}

@@ -1,4 +1,5 @@
 "use client";
+import sticker from "assets/sticker.png";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import styles from "./page.module.css";
@@ -7,26 +8,13 @@ export default function Home() {
   const router = useRouter();
   const [message, setMessage] = useState("Loading");
 
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:8081/api/home")
-  //     .then(function (response) {
-  //       console.log(response);
-  //       setMessage(response.data.message);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     })
-  //     .finally();
-  // });
-
   return (
     <main className={styles.main}>
       <h1>Welcome to the Fake Store Project</h1>
       <img
         className="Logo"
-        src="https://placehold.co/250/blue/white?text=My+Fake+Store\nLogo&font=roboto"
-        alt="My Fake Store Logo"
+        src={sticker}
+        alt="Cat and Mouse Collectibles"
         onClick={() => router.push("dashboard")}
       ></img>
       <h2>

@@ -1,6 +1,6 @@
 "use client";
 
-import ProductCards from "@/components/ProductCards";
+import ProductCards from "components/ProductCards";
 import { Suspense } from "react";
 
 export default function Dashboard() {

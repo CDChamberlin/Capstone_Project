@@ -1,6 +1,6 @@
 "use client";
-import { useUser } from "@/context/UserContext";
 import { Button, ButtonGroup } from "@mui/material";
+import { useUser } from "context/UserContext";
 import Link from "next/link";
 
 export default function Navbar({ children }) {

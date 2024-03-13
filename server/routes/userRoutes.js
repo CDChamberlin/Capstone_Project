@@ -20,4 +20,14 @@ router.put("/:email", (req, res) => {
 router.delete("/:email", (req, res) => {
   Controllers.userController.deleteUser(req, res);
 });
+
+router.post("/login", (req, res) =>{
+  console.log(`UserRoutes login req.body: ${JSON.stringify(req.body)}`)
+  Controllers.userController.login(req, res);
+})
+
+router.get("/:email", (req, res) => {
+  // 
+  Controllers.userController.getUser(req, res);
+});
 module.exports = router;
