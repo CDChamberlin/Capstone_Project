@@ -9,10 +9,13 @@ export const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const router = useRouter();
 
-  const login = (userData) => {
-    // Logic to handle login
-    // Circle Back after MVP
-    setCurrentUser(userData);
+  const login = async (userData) => {
+    console.log(`UserContext: ${JSON.stringify(userData)}`)
+    try {
+      const response = await api.get("/users/login", userData)
+    } catch (error) {
+      
+    }
   };
   const logout = () => {
     setCurrentUser(null);
@@ -23,7 +26,8 @@ export const UserProvider = ({ children }) => {
     try {
       // Send a POST request to the backend API endpoint to create a new user
       const response = await api.post("/users/create", userData);
-      setCurrentUser(userData);
+      console.log(`User Context: ${response.data}`)
+      setCurrentUser(response.data);
     } catch (error) {
       console.error("Error creating user:", error);
       throw error; // Rethrow the error to handle it in the component
@@ -32,6 +36,7 @@ export const UserProvider = ({ children }) => {
   const updateUser = async (userData) => {
     try {
       const response = await api.put(`/users/${currentUser.email}`, userData);
+      setCurrentUser(response.data)
     } catch (error) {
       console.error("Error updating user: ", error);
       throw error;
