@@ -18,7 +18,7 @@ const createUser = (data, res) => {
     .then((data) => {
       const {firstName, lastName, email } = data
       const filteredData = {firstName, lastName, email} 
-      res.status(201).send({ result: 201, data: filteredData });
+      res.status(201).send({ result: 201, user: filteredData });
     })
     .catch((err) => {
       console.log(err);
