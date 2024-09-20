@@ -19,7 +19,7 @@
     "axios": "^1.7.4",
     "jsonwebtoken": "^9.0.2",
     "mysql": "^2.18.1",
-    "next": "14.1.1",
+    "next": "14.2.12",
     "next-auth": "^4.24.7",
     "react": "^18",
     "react-dom": "^18",
